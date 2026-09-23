@@ -168,7 +168,11 @@ export async function createRoad(canvas, { animate = true } = {}) {
   resize();
   window.addEventListener('resize', resize);
 
-  const state = { wake: 0, horizon: 0.4, rumble: 0, word: 0, speed: 7, boost: 0 };
+  const state = { wake: 0, horizon: 0.4, rumble: 0, word: 0, speed: 7, boost: 0, arrive: false };
+  // Where the car comes to rest at the exit: EXIT ONLY painted a few car lengths ahead.
+  const PAINT_PERIOD = 96;
+  const PAINT_REST = 22.5;
+  let restAt = null;
   let last = performance.now();
   let raf = 0;
   let running = false;
@@ -177,7 +181,16 @@ export async function createRoad(canvas, { animate = true } = {}) {
     const dt = Math.min((now - last) / 1000, 0.05);
     last = now;
     uniforms.uTime.value += dt;
-    if (animate) uniforms.uDist.value += dt * (state.speed + state.boost);
+    if (animate) {
+      const d = uniforms.uDist.value;
+      if (state.arrive) {
+        restAt ??= Math.ceil((d + 30 - PAINT_REST) / PAINT_PERIOD) * PAINT_PERIOD + PAINT_REST;
+        uniforms.uDist.value = d + (restAt - d) * Math.min(1, dt * 1.4);
+      } else {
+        restAt = null;
+        uniforms.uDist.value = d + dt * (state.speed + state.boost);
+      }
+    }
     uniforms.uWake.value = state.wake;
     uniforms.uHorizon.value = state.horizon;
     uniforms.uRumble.value = state.rumble;

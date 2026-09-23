@@ -122,7 +122,7 @@ export function initStory(road) {
   measure();
 
   const nightHorizon = () => (window.innerWidth < 760 ? 0.34 : 0.4);
-  const dayHorizon = () => (window.innerWidth < 760 ? -0.02 : 0.04);
+  const dayHorizon = -0.02;
   const s = road.state;
   let shaking = false;
 
@@ -135,8 +135,9 @@ export function initStory(road) {
     const rumble = pw > 0 && pw < 0.24 ? Math.sin((pw / 0.24) * Math.PI) : 0;
     s.rumble = rumble;
     s.wake = smooth(0.24, 0.62, pw);
-    s.horizon = lerp(lerp(nightHorizon(), dayHorizon(), smooth(0.36, 0.82, pw)), 0.36, smooth(0.1, 0.9, pl));
+    s.horizon = lerp(lerp(nightHorizon(), dayHorizon, smooth(0.36, 0.82, pw)), 0.36, smooth(0.1, 0.9, pl));
     s.word = pl > 0.2 ? 1 : 0;
+    s.arrive = pl > 0.6;
     s.speed = lerp(7, 3.5, s.wake);
     s.boost = Math.min(Math.abs(lenis.velocity) * 0.5, 30);
 
