@@ -171,7 +171,7 @@ export async function createRoad(canvas, { animate = true } = {}) {
   const state = { wake: 0, horizon: 0.4, rumble: 0, word: 0, speed: 7, boost: 0, arrive: false };
   // Where the car comes to rest at the exit: EXIT ONLY painted a few car lengths ahead.
   const PAINT_PERIOD = 96;
-  const PAINT_REST = 22.5;
+  const PAINT_REST = 23.5;
   let restAt = null;
   let last = performance.now();
   let raf = 0;

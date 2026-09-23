@@ -825,8 +825,12 @@ html.motion .wake-copy {
   color: var(--day-ink);
 }
 
-html.gl .footer {
+/* Over the road, footer text rides on small navy plates so paint lines can't cut it. */
+html.gl.motion .footer span {
+  padding: 0.3em 0.6em 0.2em;
+  background: var(--day-ink);
   color: var(--sign-white);
+  border-radius: 4px;
 }
 
 /* ---------- Motion setup: only ever applied by JS once it's running ---------- */
