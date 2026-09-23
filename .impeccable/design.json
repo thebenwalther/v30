@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T13:52:07+00:00",
+  "title": "Design System: Ben Walther",
+  "extensions": {
+    "colorMeta": {
+      "night-ground": {
+        "role": "neutral",
+        "displayName": "Sodium Umber",
+        "canonical": "#1a1108",
+        "oklch": "oklch(18.7% 0.023 66.1)",
+        "tonalRamp": [
+          "oklch(15% 0.023 66.1)",
+          "oklch(26% 0.023 66.1)",
+          "oklch(38% 0.023 66.1)",
+          "oklch(49% 0.023 66.1)",
+          "oklch(61% 0.023 66.1)",
+          "oklch(72% 0.023 66.1)",
+          "oklch(84% 0.023 66.1)",
+          "oklch(95% 0.023 66.1)"
+        ],
+        "source": "global.css --night-ground; also the shader sodium base vec3(0.102, 0.067, 0.031)"
+      },
+      "night-ink": {
+        "role": "primary",
+        "displayName": "Sodium Amber",
+        "canonical": "#f2a541",
+        "oklch": "oklch(78.0% 0.144 69.4)",
+        "tonalRamp": [
+          "oklch(15% 0.144 69.4)",
+          "oklch(26% 0.144 69.4)",
+          "oklch(38% 0.144 69.4)",
+          "oklch(49% 0.144 69.4)",
+          "oklch(61% 0.144 69.4)",
+          "oklch(72% 0.144 69.4)",
+          "oklch(84% 0.144 69.4)",
+          "oklch(95% 0.144 69.4)"
+        ]
+      },
+      "night-dim": {
+        "role": "neutral",
+        "displayName": "Dimmed Amber",
+        "canonical": "#c0843f",
+        "oklch": "oklch(66.1% 0.113 67.3)",
+        "tonalRamp": [
+          "oklch(15% 0.113 67.3)",
+          "oklch(26% 0.113 67.3)",
+          "oklch(38% 0.113 67.3)",
+          "oklch(49% 0.113 67.3)",
+          "oklch(61% 0.113 67.3)",
+          "oklch(72% 0.113 67.3)",
+          "oklch(84% 0.113 67.3)",
+          "oklch(95% 0.113 67.3)"
+        ]
+      },
+      "sky": {
+        "role": "neutral",
+        "displayName": "Morning Sky",
+        "canonical": "#cfe0ea",
+        "oklch": "oklch(89.7% 0.023 233.4)",
+        "tonalRamp": [
+          "oklch(15% 0.023 233.4)",
+          "oklch(26% 0.023 233.4)",
+          "oklch(38% 0.023 233.4)",
+          "oklch(49% 0.023 233.4)",
+          "oklch(61% 0.023 233.4)",
+          "oklch(72% 0.023 233.4)",
+          "oklch(84% 0.023 233.4)",
+          "oklch(95% 0.023 233.4)"
+        ]
+      },
+      "sky-deep": {
+        "role": "neutral",
+        "displayName": "Deep Sky",
+        "canonical": "#9fc3db",
+        "oklch": "oklch(79.9% 0.052 237.5)",
+        "tonalRamp": [
+          "oklch(15% 0.052 237.5)",
+          "oklch(26% 0.052 237.5)",
+          "oklch(38% 0.052 237.5)",
+          "oklch(49% 0.052 237.5)",
+          "oklch(61% 0.052 237.5)",
+          "oklch(72% 0.052 237.5)",
+          "oklch(84% 0.052 237.5)",
+          "oklch(95% 0.052 237.5)"
+        ]
+      },
+      "day-ink": {
+        "role": "neutral",
+        "displayName": "Road Navy",
+        "canonical": "#13202b",
+        "oklch": "oklch(23.7% 0.028 244.9)",
+        "tonalRamp": [
+          "oklch(15% 0.028 244.9)",
+          "oklch(26% 0.028 244.9)",
+          "oklch(38% 0.028 244.9)",
+          "oklch(49% 0.028 244.9)",
+          "oklch(61% 0.028 244.9)",
+          "oklch(72% 0.028 244.9)",
+          "oklch(84% 0.028 244.9)",
+          "oklch(95% 0.028 244.9)"
+        ]
+      },
+      "day-dim": {
+        "role": "neutral",
+        "displayName": "Slate Navy",
+        "canonical": "#2f4757",
+        "oklch": "oklch(38.5% 0.040 238.4)",
+        "tonalRamp": [
+          "oklch(15% 0.040 238.4)",
+          "oklch(26% 0.040 238.4)",
+          "oklch(38% 0.040 238.4)",
+          "oklch(49% 0.040 238.4)",
+          "oklch(61% 0.040 238.4)",
+          "oklch(72% 0.040 238.4)",
+          "oklch(84% 0.040 238.4)",
+          "oklch(95% 0.040 238.4)"
+        ]
+      },
+      "sign-green": {
+        "role": "primary",
+        "displayName": "Guide-Sign Green",
+        "canonical": "#00704a",
+        "oklch": "oklch(48.2% 0.107 161.2)",
+        "tonalRamp": [
+          "oklch(15% 0.107 161.2)",
+          "oklch(26% 0.107 161.2)",
+          "oklch(38% 0.107 161.2)",
+          "oklch(49% 0.107 161.2)",
+          "oklch(61% 0.107 161.2)",
+          "oklch(72% 0.107 161.2)",
+          "oklch(84% 0.107 161.2)",
+          "oklch(95% 0.107 161.2)"
+        ]
+      },
+      "sign-white": {
+        "role": "secondary",
+        "displayName": "Reflective White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(38% 0.000 0.0)",
+          "oklch(49% 0.000 0.0)",
+          "oklch(61% 0.000 0.0)",
+          "oklch(72% 0.000 0.0)",
+          "oklch(84% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "lane-yellow": {
+        "role": "secondary",
+        "displayName": "Lane Yellow",
+        "canonical": "#f5c518",
+        "oklch": "oklch(84.2% 0.168 90.4)",
+        "tonalRamp": [
+          "oklch(15% 0.168 90.4)",
+          "oklch(26% 0.168 90.4)",
+          "oklch(38% 0.168 90.4)",
+          "oklch(49% 0.168 90.4)",
+          "oklch(61% 0.168 90.4)",
+          "oklch(72% 0.168 90.4)",
+          "oklch(84% 0.168 90.4)",
+          "oklch(95% 0.168 90.4)"
+        ]
+      },
+      "verge": {
+        "role": "neutral",
+        "displayName": "Verge Green",
+        "canonical": "#8d9c76",
+        "oklch": "oklch(67.1% 0.057 125.4)",
+        "tonalRamp": [
+          "oklch(15% 0.057 125.4)",
+          "oklch(26% 0.057 125.4)",
+          "oklch(38% 0.057 125.4)",
+          "oklch(49% 0.057 125.4)",
+          "oklch(61% 0.057 125.4)",
+          "oklch(72% 0.057 125.4)",
+          "oklch(84% 0.057 125.4)",
+          "oklch(95% 0.057 125.4)"
+        ]
+      },
+      "asphalt": {
+        "role": "tertiary",
+        "displayName": "Asphalt (shader)",
+        "canonical": "#4a4f57",
+        "oklch": "oklch(42.6% 0.015 259.8)",
+        "tonalRamp": [
+          "oklch(15% 0.015 259.8)",
+          "oklch(26% 0.015 259.8)",
+          "oklch(38% 0.015 259.8)",
+          "oklch(49% 0.015 259.8)",
+          "oklch(61% 0.015 259.8)",
+          "oklch(72% 0.015 259.8)",
+          "oklch(84% 0.015 259.8)",
+          "oklch(95% 0.015 259.8)"
+        ],
+        "source": "road.js vec3(0.29, 0.31, 0.34)"
+      },
+      "road-paint": {
+        "role": "tertiary",
+        "displayName": "Road Paint (shader)",
+        "canonical": "#f5f5ed",
+        "oklch": "oklch(96.8% 0.011 106.6)",
+        "tonalRamp": [
+          "oklch(15% 0.011 106.6)",
+          "oklch(26% 0.011 106.6)",
+          "oklch(38% 0.011 106.6)",
+          "oklch(49% 0.011 106.6)",
+          "oklch(61% 0.011 106.6)",
+          "oklch(72% 0.011 106.6)",
+          "oklch(84% 0.011 106.6)",
+          "oklch(95% 0.011 106.6)"
+        ],
+        "source": "road.js vec3(0.96, 0.96, 0.93)"
+      },
+      "sky-zenith": {
+        "role": "tertiary",
+        "displayName": "Zenith Sky (shader)",
+        "canonical": "#8fbddb",
+        "oklch": "oklch(77.6% 0.065 237.3)",
+        "tonalRamp": [
+          "oklch(15% 0.065 237.3)",
+          "oklch(26% 0.065 237.3)",
+          "oklch(38% 0.065 237.3)",
+          "oklch(49% 0.065 237.3)",
+          "oklch(61% 0.065 237.3)",
+          "oklch(72% 0.065 237.3)",
+          "oklch(84% 0.065 237.3)",
+          "oklch(95% 0.065 237.3)"
+        ],
+        "source": "road.js dayTop vec3(0.56, 0.74, 0.86)"
+      },
+      "day-horizon": {
+        "role": "tertiary",
+        "displayName": "Day Horizon (shader)",
+        "canonical": "#e6f0f2",
+        "oklch": "oklch(94.8% 0.011 211.0)",
+        "tonalRamp": [
+          "oklch(15% 0.011 211.0)",
+          "oklch(26% 0.011 211.0)",
+          "oklch(38% 0.011 211.0)",
+          "oklch(49% 0.011 211.0)",
+          "oklch(61% 0.011 211.0)",
+          "oklch(72% 0.011 211.0)",
+          "oklch(84% 0.011 211.0)",
+          "oklch(95% 0.011 211.0)"
+        ],
+        "source": "road.js dayHz vec3(0.90, 0.94, 0.95)"
+      },
+      "dawn-horizon": {
+        "role": "tertiary",
+        "displayName": "Dawn Horizon (shader)",
+        "canonical": "#ffcc99",
+        "oklch": "oklch(87.8% 0.088 66.3)",
+        "tonalRamp": [
+          "oklch(15% 0.088 66.3)",
+          "oklch(26% 0.088 66.3)",
+          "oklch(38% 0.088 66.3)",
+          "oklch(49% 0.088 66.3)",
+          "oklch(61% 0.088 66.3)",
+          "oklch(72% 0.088 66.3)",
+          "oklch(84% 0.088 66.3)",
+          "oklch(95% 0.088 66.3)"
+        ],
+        "source": "road.js dawnHz vec3(1.0, 0.80, 0.60)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; left-aligned, balanced, max 14ch."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section heads and the night jolt line; 12-16ch measure."
+      },
+      "sign-legend": {
+        "displayName": "Sign Legend",
+        "purpose": "Heading on the green guide sign."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Scrolling autopilot lines in dimmed amber; the Someday line steps to 800 full amber."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "First paragraph of a section in the primary ink; ~30ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading copy in the dim ink; 44-58ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Sign-link legends, form label (700), footer."
+      },
+      "plaque": {
+        "displayName": "Plaque",
+        "purpose": "Uppercase words on road objects only (EXIT tabs, Mile/Year); never section eyebrows."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sign-border-lg",
+        "value": "inset 0 0 0 7px var(--sign-green), inset 0 0 0 10px var(--sign-white)",
+        "purpose": "Legend border of the large guide sign."
+      },
+      {
+        "name": "sign-border-sm",
+        "value": "inset 0 0 0 3px <face>, inset 0 0 0 5px <legend>",
+        "purpose": "Legend border of the night exit link (2px/3.5px on top-bar link and markers)."
+      },
+      {
+        "name": "standing-sign",
+        "value": "0 24px 48px -24px rgb(19 32 43 / 0.55)",
+        "purpose": "The large sign standing on the roadside."
+      },
+      {
+        "name": "standing-marker",
+        "value": "0 6px 14px -8px rgb(19 32 43 / 0.55)",
+        "purpose": "Daylight year markers."
+      },
+      {
+        "name": "lift-hover",
+        "value": "0 10px 24px -8px rgb(0 0 0 / 0.6)",
+        "purpose": "Night sign links on hover, with a 1-2px rise."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Hover rises, arrow nudges, road fade-in (1.4s)."
+      },
+      {
+        "name": "hover-duration",
+        "value": "0.25s",
+        "purpose": "Sign-link rise and arrow nudge; 0.2s on the submit button."
+      },
+      {
+        "name": "smooth-scroll",
+        "value": "Lenis lerp 0.1",
+        "purpose": "Page scroll drives everything; GSAP ticker drives Lenis."
+      },
+      {
+        "name": "wake-uniform",
+        "value": "uWake = smoothstep(0.24, 0.62, wakeProgress)",
+        "purpose": "Scroll-scrubbed night-to-day crossfade in the road shader; horizon drops from 0.4 (0.34 mobile) to -0.02."
+      },
+      {
+        "name": "rumble",
+        "value": "sin(pw/0.24*PI) over first 24% of wake",
+        "purpose": "Shader shudder plus jitter on the jolt line before the wake."
+      },
+      {
+        "name": "line-reveal",
+        "value": "SplitText lines, mask, yPercent 110, expo.out 1s, stagger 0.09",
+        "purpose": "Section headings surfacing line by line."
+      },
+      {
+        "name": "list-enter",
+        "value": "autoAlpha 0, x 36, expo.out 0.7s, stagger 0.12",
+        "purpose": "Cost list items passing in from the right."
+      },
+      {
+        "name": "sign-approach",
+        "value": "scale 0.82 -> 1, origin 50% 100%, scrubbed",
+        "purpose": "The exit sign grows as you close the distance."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "no .motion class",
+        "purpose": "Still road frame behind first screen only; dawn as painted gradient band; verge ground under the sign."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "860px",
+        "purpose": "All blocks span full width; supporting copy indents 12%."
+      },
+      {
+        "name": "phone",
+        "value": "520px",
+        "purpose": "Indent removed; sign posts move inward."
+      },
+      {
+        "name": "road-mobile",
+        "value": "760px",
+        "purpose": "JS: higher night horizon (0.34), DPR cap 1.25."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Night Exit Link",
+      "kind": "button",
+      "refersTo": "exit-link-night",
+      "description": "Primary action at night: a guide sign rendered under sodium light, amber on umber, with an EXIT tab.",
+      "html": "<div class=\"ds-night\"><a class=\"ds-exit-link\" href=\"#\"><span class=\"ds-exit-tab\">Exit</span><span>The weekly letter</span><svg class=\"ds-arrow\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path d=\"M19 6h10v22h9L24 44 10 28h9z\" fill=\"currentColor\"/></svg></a></div>",
+      "css": ".ds-night{background:var(--night-ground,#1a1108);padding:40px 24px 24px} .ds-exit-link{position:relative;display:inline-grid;grid-template-columns:auto auto;align-items:center;column-gap:.9rem;padding:.85rem 1.1rem .75rem 1.25rem;background:var(--night-ink,#f2a541);color:var(--night-ground,#1a1108);border-radius:8px;box-shadow:inset 0 0 0 3px var(--night-ink,#f2a541),inset 0 0 0 5px var(--night-ground,#1a1108);font-family:var(--display,'Overpass',system-ui,sans-serif);font-weight:800;font-size:1.125rem;text-decoration:none;transition:transform .25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),box-shadow .25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1))} .ds-exit-tab{position:absolute;left:.9rem;bottom:calc(100% - 3px);padding:.2rem .55rem .05rem;background:var(--night-ink,#f2a541);border-radius:6px 6px 0 0;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em} .ds-exit-link .ds-arrow{width:1.5rem;height:1.5rem;transition:transform .25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1))} .ds-exit-link:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 3px var(--night-ink,#f2a541),inset 0 0 0 5px var(--night-ground,#1a1108),0 10px 24px -8px rgb(0 0 0 / .6)} .ds-exit-link:hover .ds-arrow{transform:translateY(2px)} .ds-exit-link:focus-visible{outline:3px solid var(--lane-yellow,#f5c518);outline-offset:3px}"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "topbar-link",
+      "description": "Wordmark left, small amber sign link right; only ever over the night road.",
+      "html": "<header class=\"ds-topbar\"><a class=\"ds-wordmark\" href=\"#\">Ben Walther</a><a class=\"ds-topbar-link\" href=\"#\">The weekly letter</a></header>",
+      "css": ".ds-topbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:24px;background:var(--night-ground,#1a1108);color:var(--night-ink,#f2a541);font-family:var(--display,'Overpass',system-ui,sans-serif)} .ds-wordmark{color:inherit;font-weight:800;font-size:1.125rem;letter-spacing:.01em;text-decoration:none} .ds-topbar-link{font-weight:800;font-size:.9375rem;text-decoration:none;padding:.5em .85em .4em;background:var(--night-ink,#f2a541);color:var(--night-ground,#1a1108);border-radius:6px;box-shadow:inset 0 0 0 2px var(--night-ink,#f2a541),inset 0 0 0 3.5px var(--night-ground,#1a1108);transition:transform .25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),box-shadow .25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1))} .ds-topbar-link:hover{transform:translateY(-1px);box-shadow:inset 0 0 0 2px var(--night-ink,#f2a541),inset 0 0 0 3.5px var(--night-ground,#1a1108),0 8px 18px -8px rgb(0 0 0 / .6)} .ds-topbar a:focus-visible{outline:3px solid var(--lane-yellow,#f5c518);outline-offset:3px}"
+    },
+    {
+      "name": "Submit Button",
+      "kind": "button",
+      "refersTo": "signup-button",
+      "description": "Daylight action on a green sign: lane-yellow face, navy legend, up-right exit arrow.",
+      "html": "<div class=\"ds-green\"><button class=\"ds-submit\" type=\"button\"><span>Get the letter</span><svg class=\"ds-arrow\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path d=\"M14 41l-7-7 18-18h-8V6h26v26H33v-8z\" fill=\"currentColor\"/></svg></button></div>",
+      "css": ".ds-green{background:var(--sign-green,#00704a);padding:24px} .ds-submit{display:inline-flex;align-items:center;gap:.6rem;min-height:3.25rem;padding:.8rem 1.25rem .7rem;border:0;border-radius:8px;background:var(--lane-yellow,#f5c518);color:var(--day-ink,#13202b);font-family:var(--display,'Overpass',system-ui,sans-serif);font-weight:800;font-size:1.0625rem;cursor:pointer;transition:background-color .2s,transform .2s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1))} .ds-submit .ds-arrow{width:1.15rem;height:1.15rem;transition:transform .25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1))} .ds-submit:hover{background:#ffd43b} .ds-submit:hover .ds-arrow{transform:translate(2px,-2px)} .ds-submit:active{transform:translateY(1px)} .ds-submit:focus-visible{outline:3px solid var(--lane-yellow,#f5c518);outline-offset:3px}"
+    },
+    {
+      "name": "Email Field",
+      "kind": "input",
+      "refersTo": "signup-input",
+      "description": "White field on the green sign with a visible Overpass label and yellow focus/error states.",
+      "html": "<div class=\"ds-green\"><label class=\"ds-label\" for=\"ds-email\">Your email</label><input id=\"ds-email\" class=\"ds-input\" type=\"email\" placeholder=\"you@example.com\"></div>",
+      "css": ".ds-green{background:var(--sign-green,#00704a);padding:24px;color:var(--sign-white,#fff)} .ds-label{display:block;margin-bottom:.5rem;font-family:var(--display,'Overpass',system-ui,sans-serif);font-weight:700;font-size:.9375rem;letter-spacing:.02em} .ds-input{width:100%;min-height:3.25rem;padding:.8rem 1rem;border:2px solid var(--sign-white,#fff);border-radius:8px;background:var(--sign-white,#fff);color:var(--day-ink,#13202b);font:inherit;font-family:var(--text,'Public Sans',system-ui,sans-serif);caret-color:var(--sign-green,#00704a)} .ds-input::placeholder{color:#5a6b76} .ds-input:focus-visible{outline:3px solid var(--lane-yellow,#f5c518);outline-offset:2px} .ds-input[aria-invalid='true']{border-color:var(--lane-yellow,#f5c518)}"
+    },
+    {
+      "name": "Guide Sign",
+      "kind": "card",
+      "refersTo": "guide-sign",
+      "description": "The signature container: green face, inset white border, EXIT tab on the top edge, two posts.",
+      "html": "<div class=\"ds-sky\"><div class=\"ds-sign\"><span class=\"ds-sign-tab\">Exit <svg class=\"ds-arrow\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path d=\"M14 41l-7-7 18-18h-8V6h26v26H33v-8z\" fill=\"currentColor\"/></svg></span><div class=\"ds-sign-face\"><h2 class=\"ds-sign-title\">Turn the thing you keep thinking about into a next step.</h2><p class=\"ds-sign-note\">The weekly letter. One short note a week.</p></div><span class=\"ds-post ds-post-l\"></span><span class=\"ds-post ds-post-r\"></span></div></div>",
+      "css": ".ds-sky{background:linear-gradient(180deg,var(--sky-deep,#9fc3db),var(--sky,#cfe0ea));padding:32px 24px 0} .ds-sign{position:relative;padding-bottom:80px} .ds-sign-tab{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.45rem;float:right;margin-right:2rem;padding:.5rem .9rem .4rem;background:var(--sign-green,#00704a);color:var(--sign-white,#fff);border-radius:10px 10px 0 0;box-shadow:inset 0 0 0 5px var(--sign-green,#00704a),inset 0 0 0 7px var(--sign-white,#fff);font-family:var(--display,'Overpass',system-ui,sans-serif);font-weight:800;font-size:.95rem;text-transform:uppercase;letter-spacing:.08em} .ds-sign-tab .ds-arrow{width:1.1rem;height:1.1rem} .ds-sign-face{clear:both;position:relative;z-index:1;padding:2rem;background:var(--sign-green,#00704a);color:var(--sign-white,#fff);border-radius:14px;box-shadow:inset 0 0 0 7px var(--sign-green,#00704a),inset 0 0 0 10px var(--sign-white,#fff),0 24px 48px -24px rgb(19 32 43 / .55)} .ds-sign-title{margin:0;font-family:var(--display,'Overpass',system-ui,sans-serif);font-weight:800;font-size:2rem;line-height:1.02;letter-spacing:-.025em;text-wrap:balance} .ds-sign-note{margin:1rem 0 0;max-width:44ch;font-family:var(--text,'Public Sans',system-ui,sans-serif);color:color-mix(in srgb,var(--sign-white,#fff) 90%,var(--sign-green,#00704a))} .ds-post{position:absolute;bottom:0;width:12px;height:100px;background:linear-gradient(90deg,#6f777d,#b5bcc1 45%,#7c848a)} .ds-post-l{left:10%} .ds-post-r{right:10%}"
+    },
+    {
+      "name": "Year Marker",
+      "kind": "chip",
+      "refersTo": "mile-marker-day",
+      "description": "Daylight mile-marker plaque: green, white inset stroke, uppercase word over a tabular numeral.",
+      "html": "<div class=\"ds-sky-row\"><span class=\"ds-marker\"><span class=\"ds-marker-word\">Year</span><span class=\"ds-marker-num\">7</span></span><span class=\"ds-marker\"><span class=\"ds-marker-word\">Year</span><span class=\"ds-marker-num\">8</span></span></div>",
+      "css": ".ds-sky-row{display:flex;gap:28px;padding:24px;background:var(--sky,#cfe0ea)} .ds-marker{display:grid;justify-items:center;width:3.6rem;padding:.5rem 0 .4rem;background:var(--sign-green,#00704a);color:var(--sign-white,#fff);border-radius:5px;box-shadow:inset 0 0 0 2px var(--sign-green,#00704a),inset 0 0 0 3.5px var(--sign-white,#fff),0 6px 14px -8px rgb(19 32 43 / .55);font-family:var(--display,'Overpass',system-ui,sans-serif);line-height:1} .ds-marker-word{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em} .ds-marker-num{margin-top:.25rem;font-size:1.35rem;font-weight:800;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Night Mile Plaque",
+      "kind": "custom",
+      "refersTo": "mile-marker-night",
+      "description": "The same plaque under sodium light: outline only, dimmed amber, counting miles as you scroll.",
+      "html": "<div class=\"ds-night\"><span class=\"ds-mile\"><span class=\"ds-mile-word\">Mile</span><span class=\"ds-mile-num\">212</span></span></div>",
+      "css": ".ds-night{background:var(--night-ground,#1a1108);padding:24px} .ds-mile{display:inline-grid;justify-items:center;width:4.25rem;padding:.55rem 0 .45rem;border:2px solid var(--night-dim,#c0843f);border-radius:6px;font-family:var(--display,'Overpass',system-ui,sans-serif);color:var(--night-dim,#c0843f);line-height:1} .ds-mile-word{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em} .ds-mile-num{margin-top:.3rem;font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Footer Plate",
+      "kind": "custom",
+      "refersTo": "footer-plate",
+      "description": "Small navy plates that keep footer text legible over lane paint.",
+      "html": "<footer class=\"ds-footer\"><span>Ben Walther</span><span>© 2026</span></footer>",
+      "css": ".ds-footer{display:flex;justify-content:space-between;gap:1rem;padding:1.5rem 24px 2rem;background:var(--asphalt,#4a4f57);font-family:var(--display,'Overpass',system-ui,sans-serif);font-weight:700;font-size:.9375rem} .ds-footer span{padding:.3em .6em .2em;background:var(--day-ink,#13202b);color:var(--sign-white,#fff);border-radius:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Drive Home",
+    "overview": "**Creative North Star: \"The Drive Home\"**\n\nThe site is one road seen through a windshield. It opens at night under low-pressure sodium lamps, where everything is a single amber hue on umber, and it ends in open daylight at a green guide sign. Every surface belongs to one of those two lights, and the change between them is the design's central event: a WebGL road behind the page carries the light, and a scroll-scrubbed `uWake` value turns sodium monochrome into dawn and then full day while the horizon drops away and the view tilts up to the sky.\n\nThe components are road furniture rather than web widgets: guide signs with an inset white border and an EXIT tab on the top edge, mile-marker plaques, lane dashes, words painted on the pavement, and small navy plates. Type is Overpass (a Highway Gothic descendant) at heavy weight for anything a driver would read off a sign, and Public Sans for the reading copy. Density is low. Headings are large, sit off-center on a 12-column grid, and have long runs of road between them.\n\nMotion is scroll-driven and physical: lines pass like dashes, the car shudders on the rumble strip, the sign grows as you approach it. With reduced motion there is a complete still version, where the road is a single frame behind the first screen and dawn becomes a painted band of light.",
+    "keyCharacteristics": [
+      "Two lights, never mixed: sodium night (one amber hue) and daylight (sky, navy, sign green, lane yellow).",
+      "The WebGL road carries the atmosphere, and the DOM stays flat above it.",
+      "Interactive elements are signs: a solid face, an inset double stroke, and a tab on top.",
+      "Heavy Overpass (800) with tight tracking for display; Public Sans for reading.",
+      "Asymmetric 12-column placements that step across the page like lanes."
+    ],
+    "rules": [
+      {
+        "name": "The Sodium Lamp Rule",
+        "body": "At night nothing has color except amber. A night-time call to action is still a guide sign, but rendered in amber on umber: no green, no white, no yellow until the wake.",
+        "section": "colors"
+      },
+      {
+        "name": "The Daylight Earns Color Rule",
+        "body": "Sign green, reflective white and lane yellow appear only in `data-tone=\"day\"` territory, after the road has turned. Their arrival is the payoff and must not be spent early.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "If a driver would read it off a sign, it is Overpass at 700–800. If a passenger would read it as a paragraph, it is Public Sans at 400. Nothing in between.",
+        "section": "typography"
+      },
+      {
+        "name": "The Plaque Caps Rule",
+        "body": "Uppercase tracked text exists only on physical road objects (tabs, markers). It is never a section label floated above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Signs Stand Rule",
+        "body": "Text blocks, sections and lists are never lifted. Only signs cast shadows, because only signs are standing objects.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** decide a surface's light first (`data-tone=\"night\"` or `\"day\"`) and draw only from that light's palette.",
+      "**Do** make every action a road object: a sign face, an inset double stroke in the face and legend colors, Overpass 800, and a guide-sign arrow.",
+      "**Do** set display and headline type in Overpass 800 at -0.03em tracking and 0.98–1.0 line height, left-aligned and balanced.",
+      "**Do** place content asymmetrically on the 12-column grid and step supporting copy to the right of its heading.",
+      "**Do** use lane yellow for focus (a 3px outline) on every interactive element, in both lights.",
+      "**Do** ship a complete still version for reduced motion, in which the road is a single frame and transitions become painted bands."
+    ],
+    "donts": [
+      "**Don't** introduce any hue other than amber into a night section, including green signs, white legends or yellow buttons.",
+      "**Don't** use uppercase tracked labels as eyebrows above headings. Caps belong only on plaques and tabs.",
+      "**Don't** lift text blocks or sections with shadows. Only signs stand.",
+      "**Don't** set reading copy in Overpass, or display text in Public Sans.",
+      "**Don't** add gradient blobs, stock photography, testimonial strips or three-card feature rows."
+    ]
+  }
+}
