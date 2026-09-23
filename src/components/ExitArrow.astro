@@ -1,0 +1,12 @@
+---
+// Guide-sign arrow: a heavy shaft with a broad head, drawn to sit on a sign legend.
+interface Props { dir?: 'down' | 'up-right'; class?: string }
+const { dir = 'up-right', class: cls = '' } = Astro.props;
+---
+<svg class={`exit-arrow ${cls}`} viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+  {dir === 'down' ? (
+    <path d="M19 6h10v22h9L24 44 10 28h9z" fill="currentColor" />
+  ) : (
+    <path d="M14 41l-7-7 18-18h-8V6h26v26H33v-8z" fill="currentColor" />
+  )}
+</svg>

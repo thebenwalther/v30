@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import ExitArrow from '../components/ExitArrow.astro';
+import Portrait from '../components/Portrait.astro';
+import SignupForm from '../components/SignupForm.astro';
+
+const routine = [
+  'Alarm. Coffee. Drive.',
+  'Good work, done well.',
+  'Pickup. Dinner. Dishes.',
+  'Scroll. Sleep.',
+];
+const passes = 3;
+const years = Array.from({ length: 15 }, (_, i) => i + 1);
+---
+
+<Base
+  title="Ben Walther: Follow through on what matters"
+  description="Practical tools and systems to help you act on what you want, so it stops pulling your attention away from today."
+>
+  <canvas class="road" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="wordmark" href="/">Ben Walther</a>
+    <a class="topbar-link" href="#letter">The weekly letter</a>
+  </header>
+
+  <main>
+    <section class="hero" data-tone="night" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title" class="hero-title">
+          Follow through on what matters. Be present for the life you have.
+        </h1>
+        <p class="hero-sub">
+          Practical tools and systems to help you act on what you want, so it stops pulling
+          your attention away from today.
+        </p>
+        <a class="exit-link" href="#letter">
+          <span class="exit-link-tab">Exit</span>
+          <span class="exit-link-legend">The weekly letter</span>
+          <ExitArrow dir="down" />
+        </a>
+      </div>
+    </section>
+
+    <section class="autopilot" data-tone="night" aria-label="Autopilot">
+      <div class="autopilot-stage">
+        <ol class="autopilot-lines">
+          {Array.from({ length: passes }, (_, pass) => (
+            <>
+              {routine.map((line) => (
+                <li aria-hidden={pass > 0 ? 'true' : undefined}>{line}</li>
+              ))}
+              <li class="autopilot-someday" aria-hidden={pass > 0 ? 'true' : undefined}>
+                Someday, I'll get to it.
+              </li>
+            </>
+          ))}
+        </ol>
+        <p class="mile" aria-hidden="true">
+          <span class="mile-word">Mile</span>
+          <span class="mile-num">212</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="wake" aria-labelledby="wake-title">
+      <div class="wake-stage">
+        <p class="wake-jolt" data-tone="night">Wait. How did I get here?</p>
+        <div class="wake-copy" data-tone="day">
+          <h2 id="wake-title" class="wake-title">A good life. And you're not fully in it.</h2>
+          <p class="wake-body">
+            Nothing is wrong, exactly. The work is good. The people are good. But there's
+            something you keep meaning to do, and every day you don't, it takes a little of
+            your attention with it. You're here, and you're also somewhere else.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cost" data-tone="day" aria-labelledby="cost-title">
+      <h2 id="cost-title" class="cost-title">
+        The cost isn't the wrong life. It's the right one, half missed.
+      </h2>
+      <div class="cost-side">
+        <p class="cost-lede">
+          Not a wrong turn. Just miles you can't remember, in the years that mattered most.
+        </p>
+        <ul class="cost-list">
+          <li>The game you were at but not watching.</li>
+          <li>The dinner you sat through, planning something else.</li>
+          <li>The weekend spent getting ready for Monday.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="story" data-tone="day" aria-labelledby="story-title">
+      <ol class="markers" aria-label="Fifteen years">
+        {years.map((y) => (
+          <li class="marker"><span class="marker-word">Year</span><span class="marker-num">{y}</span></li>
+        ))}
+      </ol>
+      <div class="story-body">
+        <h2 id="story-title" class="story-title">I drove this road for fifteen years.</h2>
+        <div class="story-text">
+          <p>
+            I was a teacher, then a coach, then an IT director. Meaningful work, the kind that
+            matters to people. I showed up for all of it. I just wasn't always there for it.
+          </p>
+          <p>
+            There was no single moment. The realization built slowly, year over year. Then,
+            during a stretch of honest self-reflection, it clicked: the thing I kept wanting and
+            never acting on was the thing pulling me out of my own life.
+          </p>
+        </div>
+        <Portrait />
+      </div>
+    </section>
+
+    <section class="move" data-tone="day" aria-labelledby="move-title">
+      <h2 id="move-title" class="move-title">Act on the want. Get your attention back.</h2>
+      <div class="move-text">
+        <p>
+          You don't need a different life. You need the thing you keep thinking about to become
+          something you're actually doing, even if it's small. Once it's moving, it stops
+          tugging at you, and you get to be here for today.
+        </p>
+        <p>
+          That's what I'm building: practical tools and systems for turning what you want into
+          what you do next.
+        </p>
+      </div>
+    </section>
+
+    <section id="letter" class="letter" data-tone="day" aria-labelledby="letter-title">
+      <div class="sign">
+        <span class="sign-tab">Exit <ExitArrow /></span>
+        <div class="sign-face">
+          <h2 id="letter-title" class="sign-title">
+            Turn the thing you keep thinking about into a next step.
+          </h2>
+          <p class="sign-note">
+            The weekly letter. One short note a week on acting on what you want, so you can be
+            present for the life you have.
+          </p>
+          <SignupForm />
+        </div>
+        <span class="sign-post sign-post-l" aria-hidden="true"></span>
+        <span class="sign-post sign-post-r" aria-hidden="true"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-tone="day">
+    <span>Ben Walther</span>
+    <span>© {new Date().getFullYear()}</span>
+  </footer>
+
+  <script>
+    import '../scripts/signup';
+    import '../scripts/main';
+  </script>
+</Base>

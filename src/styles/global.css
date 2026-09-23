@@ -1,0 +1,843 @@
+:root {
+  /* Sodium night: one hue, like a road under low-pressure lamps. */
+  --night-ground: #1a1108;
+  --night-ink: #f2a541;
+  --night-dim: #c0843f;
+  /* Daylight. */
+  --sky: #cfe0ea;
+  --sky-deep: #9fc3db;
+  --day-ink: #13202b;
+  --day-dim: #2f4757;
+  --sign-green: #00704a;
+  --sign-green-deep: #005a3b;
+  --sign-white: #ffffff;
+  --lane-yellow: #f5c518;
+  --post: #8a9197;
+
+  --display: 'Overpass Variable', 'Overpass', system-ui, sans-serif;
+  --text: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif;
+
+  --gutter: clamp(16px, 4.5vw, 64px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --fs-display: clamp(2.6rem, 1.2rem + 5.6vw, 6rem);
+  --fs-h2: clamp(2.15rem, 1.1rem + 4.2vw, 4.75rem);
+  --fs-h3: clamp(1.5rem, 1rem + 1.8vw, 2.4rem);
+  --fs-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --fs-small: 0.9375rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--night-ground);
+  color: var(--night-ink);
+  scrollbar-color: var(--night-dim) var(--night-ground);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--night-ground);
+  font-family: var(--text);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+html.gl body {
+  background: transparent;
+}
+
+h1,
+h2,
+p,
+ol,
+ul,
+figure {
+  margin: 0;
+}
+
+ol,
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 0.08em;
+}
+
+::selection {
+  background: var(--night-ink);
+  color: var(--night-ground);
+}
+
+[data-tone='day'] ::selection,
+[data-tone='day']::selection {
+  background: var(--lane-yellow);
+  color: var(--day-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--lane-yellow);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- The road (WebGL canvas, fixed behind everything) ---------- */
+
+.road {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100lvh;
+  z-index: -1;
+  display: none;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease-out);
+}
+
+html.gl .road {
+  display: block;
+}
+
+html.gl.road-ready .road {
+  opacity: 1;
+}
+
+/* Tone backgrounds carry the story wherever the road can't. */
+html:not(.gl) [data-tone='night'] {
+  background: var(--night-ground);
+}
+
+html:not(.gl) [data-tone='day'],
+html:not(.motion) [data-tone='day'] {
+  background: linear-gradient(180deg, var(--sky-deep), var(--sky) 60%);
+}
+
+html:not(.motion) .footer[data-tone='day'] {
+  background: var(--sky);
+}
+
+[data-tone='night'] {
+  color: var(--night-ink);
+}
+
+[data-tone='day'] {
+  color: var(--day-ink);
+}
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(16px, 2.4vw, 28px) var(--gutter);
+  font-family: var(--display);
+  color: var(--night-ink);
+}
+
+.wordmark {
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.topbar-link {
+  font-weight: 700;
+  font-size: var(--fs-small);
+  text-decoration: none;
+  padding: 0.35em 0.8em 0.25em;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.topbar-link:hover {
+  background: var(--night-ink);
+  color: var(--night-ground);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 16px;
+  padding: 0 var(--gutter);
+  align-content: start;
+  padding-top: clamp(96px, 16vh, 180px);
+}
+
+.hero-copy {
+  grid-column: 1 / span 9;
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--fs-display);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+
+.hero-sub {
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+  max-width: 34ch;
+  font-size: clamp(1.125rem, 1rem + 0.55vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--night-ink);
+  text-wrap: pretty;
+}
+
+/* A guide sign rendered under sodium light: no green yet, just amber. */
+.exit-link {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  column-gap: 0.9rem;
+  margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+  padding: 0.85rem 1.1rem 0.75rem 1.25rem;
+  background: var(--night-ink);
+  color: var(--night-ground);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 3px var(--night-ink), inset 0 0 0 5px var(--night-ground);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.125rem;
+  text-decoration: none;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+}
+
+.exit-link-tab {
+  position: absolute;
+  left: 0.9rem;
+  bottom: calc(100% - 3px);
+  padding: 0.2rem 0.55rem 0.05rem;
+  background: var(--night-ink);
+  border-radius: 6px 6px 0 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.exit-link .exit-arrow {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.exit-link:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 0 3px var(--night-ink), inset 0 0 0 5px var(--night-ground),
+    0 10px 24px -8px rgb(0 0 0 / 0.6);
+}
+
+.exit-link:hover .exit-arrow {
+  transform: translateY(2px);
+}
+
+.exit-arrow {
+  display: block;
+  transition: transform 0.25s var(--ease-out);
+}
+
+/* ---------- Autopilot ---------- */
+
+.autopilot {
+  position: relative;
+  padding: 18vh var(--gutter) 22vh;
+}
+
+.autopilot-stage {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 16px;
+}
+
+.autopilot-lines {
+  grid-column: 2 / span 8;
+  display: grid;
+  gap: clamp(1.5rem, 4vh, 3rem);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--night-dim);
+}
+
+.autopilot-someday {
+  color: var(--night-ink);
+  font-weight: 800;
+}
+
+.mile {
+  display: none;
+}
+
+html.motion .autopilot {
+  height: 320vh;
+  padding: 0;
+}
+
+html.motion .autopilot-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  padding: 0 var(--gutter);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 22%, #000 70%, transparent 100%);
+}
+
+html.motion .autopilot-lines {
+  padding-top: 70svh;
+  will-change: transform;
+}
+
+/* Mile marker: a small upright plaque, still colorless at night. */
+html.motion .mile {
+  position: absolute;
+  right: var(--gutter);
+  top: 50%;
+  display: grid;
+  justify-items: center;
+  width: 4.25rem;
+  padding: 0.55rem 0 0.45rem;
+  border: 2px solid var(--night-dim);
+  border-radius: 6px;
+  font-family: var(--display);
+  color: var(--night-dim);
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.mile-word {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mile-num {
+  margin-top: 0.3rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Wake ---------- */
+
+.wake-jolt {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  padding: 20vh var(--gutter);
+  max-width: 12ch;
+  box-sizing: content-box;
+}
+
+.wake-copy {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 22vh var(--gutter);
+}
+
+.wake-title {
+  grid-column: 1 / span 10;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 15ch;
+}
+
+.wake-body {
+  grid-column: 6 / span 6;
+  max-width: 44ch;
+  color: var(--day-dim);
+  text-wrap: pretty;
+}
+
+html.motion .wake {
+  height: 300vh;
+}
+
+html.motion .wake-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: grid;
+  align-items: center;
+}
+
+html.motion .wake-stage > * {
+  grid-area: 1 / 1;
+  background: none;
+}
+
+html.motion .wake-jolt,
+html.motion .wake-copy {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* ---------- Cost ---------- */
+
+.cost {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: clamp(2rem, 5vw, 4rem);
+  padding: clamp(96px, 18vh, 200px) var(--gutter) clamp(72px, 12vh, 140px);
+}
+
+.cost-title {
+  grid-column: 1 / span 9;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 16ch;
+}
+
+.cost-side {
+  grid-column: 7 / span 5;
+}
+
+.cost-lede {
+  font-size: clamp(1.2rem, 1rem + 0.7vw, 1.5rem);
+  line-height: 1.45;
+  max-width: 30ch;
+  text-wrap: pretty;
+}
+
+.cost-list {
+  margin-top: 2rem;
+  display: grid;
+  border-top: 2px solid var(--day-ink);
+}
+
+.cost-list li {
+  padding: 0.9rem 0 0.85rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--day-ink) 35%, transparent);
+  color: var(--day-dim);
+}
+
+/* ---------- Story ---------- */
+
+.story {
+  padding: clamp(64px, 10vh, 120px) 0 clamp(96px, 16vh, 180px);
+  overflow: hidden;
+}
+
+.markers {
+  display: flex;
+  gap: clamp(28px, 6vw, 88px);
+  padding: 0 var(--gutter);
+  width: max-content;
+}
+
+.marker {
+  display: grid;
+  justify-items: center;
+  width: 3.6rem;
+  padding: 0.5rem 0 0.4rem;
+  background: var(--sign-green);
+  color: var(--sign-white);
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 2px var(--sign-green), inset 0 0 0 3.5px var(--sign-white),
+    0 6px 14px -8px rgb(19 32 43 / 0.55);
+  font-family: var(--display);
+  line-height: 1;
+}
+
+.marker-word {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.marker-num {
+  margin-top: 0.25rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.story-body {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: clamp(1.75rem, 4vw, 3rem);
+  padding: clamp(56px, 10vh, 120px) var(--gutter) 0;
+}
+
+.story-title {
+  grid-column: 4 / span 8;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 13ch;
+}
+
+.story-text {
+  grid-column: 4 / span 6;
+  display: grid;
+  gap: 1.1em;
+  max-width: 58ch;
+  color: var(--day-dim);
+}
+
+.story-text p:first-child {
+  color: var(--day-ink);
+  font-size: clamp(1.2rem, 1rem + 0.6vw, 1.45rem);
+  line-height: 1.45;
+}
+
+.portrait {
+  grid-column: 10 / span 3;
+  grid-row: 2;
+  align-self: start;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* ---------- Move ---------- */
+
+.move {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: clamp(1.75rem, 4vw, 3rem);
+  padding: clamp(80px, 14vh, 160px) var(--gutter) clamp(120px, 26vh, 300px);
+}
+
+.move-title {
+  grid-column: 2 / span 9;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+
+.move-text {
+  grid-column: 2 / span 5;
+  display: grid;
+  gap: 1.1em;
+  max-width: 46ch;
+  color: var(--day-dim);
+}
+
+.move-text p:first-child {
+  color: var(--day-ink);
+}
+
+/* ---------- Letter: a real guide sign ---------- */
+
+.letter {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 16px;
+  padding: clamp(48px, 8vh, 96px) var(--gutter) 0;
+}
+
+.sign {
+  position: relative;
+  grid-column: 5 / span 8;
+  padding-bottom: clamp(120px, 22vh, 240px);
+}
+
+.sign-face {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+  background: var(--sign-green);
+  color: var(--sign-white);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 7px var(--sign-green), inset 0 0 0 10px var(--sign-white),
+    0 24px 48px -24px rgb(19 32 43 / 0.55);
+}
+
+/* The exit tab sits on the sign's top edge, as it does on the highway. */
+.sign-tab {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  float: right;
+  margin-right: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 0.5rem 0.9rem 0.4rem;
+  background: var(--sign-green);
+  color: var(--sign-white);
+  border-radius: 10px 10px 0 0;
+  box-shadow: inset 0 0 0 5px var(--sign-green), inset 0 0 0 7px var(--sign-white);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sign-tab .exit-arrow {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.sign-face {
+  clear: both;
+}
+
+.sign-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2rem, 1.1rem + 3.4vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  max-width: 16ch;
+}
+
+.sign-note {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  max-width: 44ch;
+  color: color-mix(in srgb, var(--sign-white) 90%, var(--sign-green));
+}
+
+.sign-post {
+  position: absolute;
+  bottom: 0;
+  width: clamp(10px, 1.2vw, 16px);
+  height: clamp(140px, 26vh, 280px);
+  background: linear-gradient(90deg, #6f777d, #b5bcc1 45%, #7c848a);
+}
+
+.sign-post-l {
+  left: 22%;
+}
+
+.sign-post-r {
+  right: 22%;
+}
+
+/* ---------- Signup ---------- */
+
+.signup {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.signup-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--fs-small);
+  letter-spacing: 0.02em;
+}
+
+.signup-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.signup-input {
+  flex: 1 1 16rem;
+  min-width: 0;
+  min-height: 3.25rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--sign-white);
+  border-radius: 8px;
+  background: var(--sign-white);
+  color: var(--day-ink);
+  font: inherit;
+  caret-color: var(--sign-green);
+}
+
+.signup-input::placeholder {
+  color: #5a6b76;
+}
+
+.signup-input:focus-visible {
+  outline: 3px solid var(--lane-yellow);
+  outline-offset: 2px;
+}
+
+.signup-input[aria-invalid='true'] {
+  border-color: var(--lane-yellow);
+}
+
+.signup-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0.8rem 1.25rem 0.7rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--lane-yellow);
+  color: var(--day-ink);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.0625rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s var(--ease-out);
+}
+
+.signup-button .exit-arrow {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.signup-button:hover {
+  background: #ffd43b;
+}
+
+.signup-button:hover .exit-arrow {
+  transform: translate(2px, -2px);
+}
+
+.signup-button:active {
+  transform: translateY(1px);
+}
+
+.signup-button[disabled] {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.signup-status {
+  min-height: 1.6em;
+  margin-top: 0.75rem;
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.signup-status:empty {
+  margin-top: 0;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem var(--gutter) 2rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--fs-small);
+  color: var(--day-ink);
+}
+
+html.gl .footer {
+  color: var(--sign-white);
+}
+
+/* ---------- Motion setup: only ever applied by JS once it's running ---------- */
+
+.split-line {
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 860px) {
+  .hero-copy,
+  .autopilot-lines,
+  .wake-title,
+  .wake-body,
+  .cost-title,
+  .cost-side,
+  .story-title,
+  .story-text,
+  .move-title,
+  .move-text,
+  .sign {
+    grid-column: 1 / -1;
+  }
+
+  .hero {
+    padding-top: clamp(88px, 14vh, 140px);
+  }
+
+  .wake-body,
+  .cost-side,
+  .move-text {
+    padding-left: 12%;
+  }
+
+  .portrait {
+    grid-column: 1 / span 8;
+    grid-row: auto;
+  }
+
+  html.motion .mile {
+    top: auto;
+    bottom: 12svh;
+    transform: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .wake-body,
+  .cost-side,
+  .move-text {
+    padding-left: 0;
+  }
+
+  .sign-post-l {
+    left: 16%;
+  }
+
+  .sign-post-r {
+    right: 16%;
+  }
+}

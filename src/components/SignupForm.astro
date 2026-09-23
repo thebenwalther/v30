@@ -1,0 +1,32 @@
+---
+import { SIGNUP } from '../config';
+import ExitArrow from './ExitArrow.astro';
+const { endpoint, emailField } = SIGNUP;
+---
+<form
+  class="signup"
+  method="post"
+  action={endpoint || undefined}
+  data-endpoint={endpoint}
+  novalidate
+>
+  <label class="signup-label" for="signup-email">Your email</label>
+  <div class="signup-row">
+    <input
+      id="signup-email"
+      class="signup-input"
+      type="email"
+      name={emailField}
+      autocomplete="email"
+      inputmode="email"
+      placeholder="you@example.com"
+      required
+      aria-describedby="signup-status"
+    />
+    <button class="signup-button" type="submit">
+      <span>Get the letter</span>
+      <ExitArrow />
+    </button>
+  </div>
+  <p id="signup-status" class="signup-status" role="status" aria-live="polite"></p>
+</form>

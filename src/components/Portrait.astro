@@ -1,0 +1,10 @@
+---
+// Renders nothing until a real portrait is configured in src/config.ts.
+import { PORTRAIT } from '../config';
+const { src, alt } = PORTRAIT;
+---
+{src && (
+  <figure class="portrait">
+    <img src={src} alt={alt} width="720" height="900" loading="lazy" decoding="async" />
+  </figure>
+)}
